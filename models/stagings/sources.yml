@@ -4,6 +4,8 @@ sources:
   - name: adw
     description: Banco de dados réplica do SAP Adventure WORK
     schema: sap_adw
+
+    #Stagings relacionadas a Person.
     tables:  
       - name: address
         columns:
@@ -32,5 +34,57 @@ sources:
             tests:
               - unique
               - not null
+      
+      #Stagings relacionadas a Sales.
+      - name: creditcard
+        columns:
+          - name: creditcardid
+            tests:
+              - unique
+              - not null
   
+      - name: customer
+        columns:
+          - name: customerid
+            tests:
+              - unique
+              - not null
+      
+      - name: salesorderdetail
+        columns:
+          - name: salesorderid
+            tests:
+              - unique
+              - not null
 
+      - name: salesorderheader
+        columns:
+          - name: salesorderid
+            tests:
+              - unique
+              - not null
+      
+      - name: salesorderheadersalesreason
+        columns:
+          - name: salesorderid
+            tests:
+              - unique
+              - not null
+      
+      - name: salesreason
+        columns:
+          - name: salesreasonid
+            tests:
+              - unique
+              - not null
+      
+      - name: store
+        columns:
+          - name: businessentityid
+            tests:
+              - unique
+              - not null
+     
+     
+     
+     
