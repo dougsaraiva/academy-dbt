@@ -37,10 +37,11 @@ models:
     # Applies to all files under models/example/
     stagings:
       +materialized: table
+      +schema: staging
 
     marts:
       +materialized: table
-
+      +schema: marts
 
 seeds:
   adventure_works: 
