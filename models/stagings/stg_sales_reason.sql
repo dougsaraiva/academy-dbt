@@ -1,11 +1,10 @@
 with
     sap_adw_salesreason as(
         select
-            salesreasonid as sales_reason_id
-            ,name
-            ,reasontype as reason_type
-            ,modifieddate as modified_date
-         
+             cast(salesreasonid as int64) as sales_reason_id
+            ,cast(name as string) as sales_reason_name
+            ,cast(reasontype as  string) as sales_reason_type
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', modifieddate)) as sales_reason_modified_date
         from {{source('adw', 'salesreason')}}
     )
 

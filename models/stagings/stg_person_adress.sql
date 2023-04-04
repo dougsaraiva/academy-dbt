@@ -1,16 +1,10 @@
 with
     sap_adw_address as(
         select
-            addressid as address_id
-            ,stateprovinceid as state_province_id
-            ,addressline1 as address_line_1
-            ,addressline2 as address_line_2
-            ,city
-            ,postalcode as postal_code
-            ,spatiallocation as spatial_location
-            ,rowguid as row_guid
-            ,modifieddate as modified_date
-            
+            cast(addressid as int64) as address_id
+            ,cast(city as string) as address_city
+            ,cast(stateprovinceid as int64) as address_state_province_id
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', modifieddate)) as address_modified_date
         from {{source('adw', 'address')}}
     )
 
