@@ -84,7 +84,16 @@ sources:
             tests:
               - unique
               - not null
-     
+
+      #Staging relacionadas a Products.
+
+      - name: product
+        columns:
+          - name: productid
+            tests:
+              - unique
+              - not null
+
      
      
      
