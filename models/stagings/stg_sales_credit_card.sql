@@ -1,17 +1,13 @@
 with
-    sap_adw_screditcard as(
+    sap_adw_creditcard as(
         select
-            creditcardid as credit_cardid
-            ,cardtype as card_type
-            ,cardnumber as card_number
-            ,expmonth as exp_month
-            ,expyear as exp_year
-            ,modifieddate as modified_date
-            
+            cast(creditcardid as int64) as credit_card_id
+            ,cast(cardtype as string) as credit_card_type
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', modifieddate)) as credit_card_modified_date
         from {{source('adw', 'creditcard')}}
     )
 
 select *
-from sap_adw_screditcard
+from sap_adw_creditcard
 
 

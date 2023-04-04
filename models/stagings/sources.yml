@@ -86,7 +86,6 @@ sources:
               - not null
 
       #Staging relacionadas a Products.
-
       - name: product
         columns:
           - name: productid

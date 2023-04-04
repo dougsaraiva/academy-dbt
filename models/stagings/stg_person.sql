@@ -1,20 +1,11 @@
 with
     sap_adw_person as (
         select
-            businessentityid as business_entity_id
-            ,persontype as person_type
-            ,namestyle as names_tyle
-            ,title
-            ,firstname as first_name
-            ,middlename as middle_name
-            ,lastname as last_name
-            ,suffix
-            ,emailpromotion as email_promotion
-            ,additionalcontactinfo as additional_contact_info
-            ,demographics as demographics
-            ,rowguid as row_guid
-            ,modifieddate as modified_date
-            
+            cast(businessentityid as int64) as person_business_entity_id
+            ,cast(firstname as string) as person_first_name
+            ,cast(middlename as string) as person_middle_name
+            ,cast(lastname as string) as person_last_name
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', modifieddate)) as person_modified_date
         from {{source("adw", "person")}}
     )
 

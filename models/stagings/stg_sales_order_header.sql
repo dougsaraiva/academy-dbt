@@ -1,32 +1,18 @@
 with
     sap_adw_salesorderheader as(
         select
-            salesorderid as sales_order_id
-            ,revisionnumber as revision_number
-            ,orderdate as order_date
-            ,duedate as due_date
-            ,shipdate as ship_date
-            ,status  
-            ,onlineorderflag as online_order_flag
-            ,purchaseordernumber as purchase_order_number
-            ,accountnumber as account_number
-            ,customerid as customer_id
-            ,salespersonid as salesperson_id
-            ,territoryid as territory_id
-            ,billtoaddressid as bill_to_address_id
-            ,shiptoaddressid as ship_to_address_id
-            ,shipmethodid as ship_method_id
-            ,creditcardid as credit_card_id
-            ,creditcardapprovalcode as credit_card_approval_code
-            ,currencyrateid as currency_rate_id
-            ,subtotal
-            ,taxamt as tax_amt
-            ,freight as freight
-            ,totaldue as total_due
-            ,comment 
-            ,rowguid as row_guid
-            ,modifieddate as modified_date
-
+            cast(salesorderid as int64) as sales_order_header_sales_order_id
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', orderdate)) as sales_order_header_order_date
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', duedate)) as sales_order_header_due_date
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', shipdate)) as sales_order_header_ship_date
+            ,cast(status as int64) as sales_order_header_status
+            ,cast(customerid as int64) as sales_order_header_customer_id
+            ,cast(territoryid as int64) as sales_order_header_territory_id
+            ,cast(shiptoaddressid as int64) as sales_order_header_ship_to_address_id
+            ,cast(creditcardid as int64) as sales_order_header_credit_card_id
+            ,cast(subtotal as float64) as sales_order_header_subtotal
+            ,cast(totaldue as float64) as sales_order_header_total_due
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', modifieddate)) as sales_order_header_modified_date
         from {{source('adw', 'salesorderheader')}}
     )
 

@@ -1,13 +1,11 @@
 with
     sap_adw_customer as (
         select
-            customerid as customer_id
-            ,personid as person_id
-            ,storeid as store_id
-            ,territoryid as territory_id
-            ,rowguid as row_guid
-            ,modifieddate as modified_date
-            
+            cast(customerid as int64) as customer_id
+            , cast(personid as int64) as customer_person_id
+            , cast(storeid as int64) as customer_store_id
+            , cast(territoryid as int64) as customer_territory_id
+            ,datetime(parse_timestamp('%Y-%m-%d %H:%M:%E*S', modifieddate)) as customer_modified_date
         from {{ source("adw", "customer") }}
     )
 
