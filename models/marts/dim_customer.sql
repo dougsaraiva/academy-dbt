@@ -37,6 +37,7 @@ with
         select
             row_number() over(order by customer_id) as customer_sk
             ,customer_id
+            ,customer_store_id
             ,customer_name
             ,customer_territory_id
         from join_tables

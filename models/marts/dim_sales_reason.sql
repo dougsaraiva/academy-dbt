@@ -17,6 +17,7 @@ with
         select
             row_number() over(order by sales_order_header_sales_reason_sales_order_id) as sales_order_header_sales_reason_sales_order_sk
             ,sales_order_header_sales_reason_sales_order_id
+            ,sales_reason_id
             ,sales_reason_name
             ,sales_reason_type
         from stg_sales_order_header_sales_reason
