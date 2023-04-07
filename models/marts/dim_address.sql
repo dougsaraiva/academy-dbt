@@ -24,6 +24,7 @@ with
         select
             stg_person_adress.address_id
             ,stg_person_adress.address_city
+            ,stg_person_state_province.state_province_id
             ,stg_person_state_province.state_province_country_region_code
             ,stg_person_state_province.state_province_name
             ,stg_person_state_province.state_province_territory_id
@@ -37,6 +38,7 @@ with
             row_number() over(order by address_id) as address_sk
             ,address_id
             ,address_city
+            ,state_province_id
             ,state_province_country_region_code
             ,state_province_name
             ,state_province_territory_id
