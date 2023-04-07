@@ -9,6 +9,7 @@ with
             ,cast(customerid as int64) as sales_order_header_customer_id
             ,cast(territoryid as int64) as sales_order_header_territory_id
             ,cast(shiptoaddressid as int64) as sales_order_header_ship_to_address_id
+            ,cast(billtoaddressid as int64) as sales_order_header_bill_to_address_id
             ,cast(creditcardid as int64) as sales_order_header_credit_card_id
             ,cast(subtotal as float64) as sales_order_header_subtotal
             ,cast(totaldue as float64) as sales_order_header_total_due
